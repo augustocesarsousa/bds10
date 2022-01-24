@@ -88,7 +88,7 @@ const Form = () => {
               </div>
               <div className="margin-bottom-30">
                 <label htmlFor="department" className="d-none">
-                  Departamentos
+                  Departamento
                 </label>
                 <Controller
                   name="department"
@@ -99,8 +99,12 @@ const Form = () => {
                       {...field}
                       options={selectDepartment}
                       classNamePrefix="employee-crud-select"
-                      getOptionLabel={(department: Department) =>  department.name}
-                      getOptionValue={(department: Department) =>  String(department.id)}
+                      getOptionLabel={(department: Department) =>
+                        department.name
+                      }
+                      getOptionValue={(department: Department) =>
+                        String(department.id)
+                      }
                       inputId="department"
                       placeholder="Departamento"
                     />
