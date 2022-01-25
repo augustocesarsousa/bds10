@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import Select from 'react-select';
+import { toast } from 'react-toastify';
 import { Department } from 'types/department';
 import { Employee } from 'types/employee';
 import { requestBackend } from 'util/requests';
@@ -17,11 +18,26 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
     control,
   } = useForm<Employee>();
 
-  const onSubmit = () => {};
+  const onSubmit = (formData: Employee) => {
+    const config: AxiosRequestConfig = {
+      method: 'POST',
+      url: '/employees',
+      data: formData,
+      withCredentials: true,
+    };
+
+    requestBackend(config)
+      .then(() => {
+        toast.info('Cadastrado com sucesso');
+        history.push('/admin/employees');
+      })
+      .catch(() => {
+        toast.error('Erro ao cadastrar');
+      });
+  };
 
   const handleCancel = () => {
     history.push('/admin/employees');
