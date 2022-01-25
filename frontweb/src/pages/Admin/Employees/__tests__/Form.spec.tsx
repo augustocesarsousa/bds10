@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Form from "../Form";
-import history from 'util/history';
 import { Router } from 'react-router-dom';
-import { server } from "./fixtures";
 import selectEvent from "react-select-event";
 import { ToastContainer } from 'react-toastify';
+import history from 'util/history';
+import Form from "../Form";
+import { server } from "./fixtures";
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());

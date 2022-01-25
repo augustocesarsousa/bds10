@@ -1,3 +1,4 @@
+import PrivateRoute from "components/PrivateRoute";
 import { Route, Switch } from "react-router-dom";
 import Form from "./Form";
 import List from "./List";
@@ -9,9 +10,9 @@ const Employee = () => {
             <Route path="/admin/employees" exact>
                 <List />
             </Route>
-            <Route path="/admin/employees/:employeeId">
+            <PrivateRoute path="/admin/employees/:employeeId">
                 <Form />
-            </Route>
+            </PrivateRoute>
         </Switch>
     )
 }
