@@ -10,7 +10,7 @@ const Employee = () => {
             <Route path="/admin/employees" exact>
                 <List />
             </Route>
-            <PrivateRoute path="/admin/employees/:employeeId">
+            <PrivateRoute path="/admin/employees/:employeeId" roles={['ROLE_ADMIN']}>
                 <Form />
             </PrivateRoute>
         </Switch>

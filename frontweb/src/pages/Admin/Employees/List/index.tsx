@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Employee } from 'types/employee';
 import { SpringPage } from 'types/vendor/spring';
+import { hasAnyRoles } from 'util/auth';
 import { requestBackend } from 'util/requests';
 import './styles.css';
 
@@ -34,9 +35,11 @@ const List = () => {
   return (
     <>
       <Link to="/admin/employees/create">
-        <button className="btn btn-primary text-white btn-crud-add">
-          ADICIONAR
-        </button>
+        {hasAnyRoles(['ROLE_ADMIN']) && (
+          <button className="btn btn-primary text-white btn-crud-add">
+            ADICIONAR
+          </button>
+        )}
       </Link>
       {page?.content.map((employee) => (
         <EmployeeCard employee={employee} key={employee.id} />
